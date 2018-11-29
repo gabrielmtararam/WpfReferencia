@@ -3,21 +3,80 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
         xmlns:local="clr-namespace:WpfReferencia"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-     
-        Title="MainWindow" Height="450" Width="800" Icon="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfReferencia\compass.jpg" ResizeMode="CanMinimize" ShowInTaskbar="True" SizeToContent="Manual" Topmost="True" WindowStartupLocation="CenterScreen" WindowState="Minimized">
-    <Grid>
+        Background="{DynamicResource WindowBackgroundBrush}"
+         Title="MainWindow"
+        Height="450" 
+        Width="800" 
+        Icon="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfReferencia\compass.jpg" 
+        ResizeMode="CanResize" 
+        ShowInTaskbar="True" 
+        SizeToContent="Manual" 
+        Topmost="False" 
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        >
         
+    <Window.Resources>
+        <!--inicializa um recurso, com uso exemplificado abaixo 
+            podem ser utilizados varios tipos como recursos, background, string e etc
+            e valem as regras de escopos, se declarar dentro de um stack panel por exemplo
+            somente ele pode acessars
+        -->
+        <sys:String x:Key="resourceTest">testando resource</sys:String>
+
+        <LinearGradientBrush x:Key="WindowBackgroundBrush">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
+
+        <x:Array x:Key="ComboBoxItems" Type="sys:String">
+            <sys:String>Item #1</sys:String>
+            <sys:String>Item #2</sys:String>
+            <sys:String>Item #3</sys:String>
+        </x:Array>
+    </Window.Resources>
+   <Grid>
+
+
+        <StackPanel Margin="10">
+            <TextBlock Text="{StaticResource resourceTest}" FontSize="30" />
+            <TextBlock>resource text "<TextBlock Text="{StaticResource resourceTest}" />" exemplo</TextBlock>
+            <Label Content="{StaticResource resourceTest}" />
+            <ComboBox ItemsSource="{StaticResource ComboBoxItems}" />
+
+
+            <DockPanel Margin="10" Name="pnlMain">
+
+
+                <Button Name="btnClickMe" Click="btnClickMe_Click">utiliza resources e 
+                lanca excecao
+                </Button>
+            <ListBox Name="lbResult"  Height="450"  />
+        
+
+          </DockPanel>
+        </StackPanel>
     </Grid>
+
+    <!--static resource is resolved only once, which is at the point where the XAML is loaded. If the resource is then changed later on, this change will not be reflected where you have used the StaticResource.
+
+DynamicResource on the other hand, is resolved once it's actually needed, and then again if the resource changes.
+
+Dynamic resources also allows you to use resources which are not even there during design time, e.g. if you add them from Code-behind during the startup of the application-->
+
+
+
 </Window>
 <!--ver caminho relativo 
     ShowInTaskbar=False nao exibe o icone da janela na task bar
     Topmost True mantem a janela no top das outras sempre
-    
+    WindowState=minimazed e etc
     App.xaml.cs extends the Application class, which is a central class in a WPF Windows 
+
     
-    Startup="Application_Startup">
-    substituiu pelo evento Startup
 
     -->

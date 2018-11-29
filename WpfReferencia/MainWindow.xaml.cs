@@ -24,6 +24,24 @@ namespace WpfReferencia
         {
             InitializeComponent(); 
         }
+        //metodo para testar obeter resources associados a janela
+        private void btnClickMe_Click(object sender, RoutedEventArgs e)
+        {
+            lbResult.Items.Add(this.FindResource("resourceTest").ToString());
+
+            //testando tratamento de excecao 
+            string s = null;
+            try
+            {
+                s.Trim();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+
+        }
 
 
     }

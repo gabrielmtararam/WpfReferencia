@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpReferencePanels.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpReferencePanels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- ###################################################
+	    	 ################  Canvas   ########################
+		     ################################################### --> 
+        <!-- 
+        A simple panelIt allows you to assign specific 
+        coordinates to each of the child controls, giving you total control of the layout
+         you have to manually move the child controls around and make 
+        sure that they align the way you want them to. 
+        -->
+
+        <!-- ###################################################
+	    	 ################  WrapPanel   ########################
+		     ################################################### -->
+        <!-- 
+        will position each of its child controls next to the other, horizontally (default) 
+        or vertically, until there is no more room, where it will wrap to the next line and then continue.
+        -->
+
+        <!-- ###################################################
+	    	 ################  StackPanel   ########################
+		     ################################################### -->
+        <!-- 
+         acts much like the WrapPanel, but instead of wrapping
+        ]if the child controls take up too much room, it simply expands itself, if possible.
+         but instead of adjusting the width or height of the child controls based on the
+        largest item, each item is stretched to take up the full width or height
+        -->
+
+        
+        <!-- ###################################################
+	    	 ################  DockPanel   ########################
+		     ################################################### -->
+        <!-- 
+         allows you to dock the child controls to the top, bottom, left or right.
+        By default, the last control, if not given a specific dock position, will fill the remaining space.
+        the DockPanel will be easier to use than grid in some cases
+       Use the DockPanel whenever you need to dock one or several controls to one of the sides,
+        like for dividing up the window into specific areas.
+        -->
+
+        <!-- ###################################################
+	    	 ################  Grid   ########################
+		     ################################################### -->
+        <!-- 
+       The Grid is probably the most complex of the panel types. A Grid can contain
+        multiple rows and columns. You define a height for each of the rows and a width
+        for each of the columns, in either an absolute amount of pixels, in a percentage of the available
+        space or as auto, where the row or column will automatically adjust its size depending on the content. 
+        -->
+
+        <!-- ###################################################
+	    	 ################  UniformGrid   ########################
+		     ################################################### -->
+        <!-- 
+       possibility of multiple rows and columns, but with one
+        important difference: All rows and columns will have the same size!. 
+        -->
+    </Grid>
+</Window>

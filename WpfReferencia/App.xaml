@@ -2,12 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfReferencia"
-             StartupUri="MainWindow.xaml">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException"
+             >
             <!--
                substituiu pelo metodo Application_Startup ao inves de usar a janela, implementado no .cs
                Startup="Application_Startup">
+               vantagem de manipular a janela antes de exibir ela
+              
+    
+                DispatcherUnhandledException
+                WPF lets you handle all unhandled exceptions globally. 
+                This is done through the DispatcherUnhandledException
+                implementada no app.cs
+    
+                The App.xaml file can contain resources just 
+                like the window and any kind of WPF control, 
+                and when you store them in App.xaml, 
+                they are globally accessible in all of windows
+                exemplo abaixo
             -->
+  
     <Application.Resources>
-         
+        <sys:String x:Key="globalResource">All windows can acess</sys:String>
     </Application.Resources>
 </Application>

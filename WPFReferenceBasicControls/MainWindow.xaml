@@ -1,0 +1,205 @@
+﻿<Window x:Class="WPFReferenceBasicControls.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:WPFReferenceBasicControls"
+		mc:Ignorable="d"
+		ResizeMode="CanResize" 
+		SizeToContent="WidthAndHeight" 
+		Title="MainWindow" Height="450" Width="800">
+	<StackPanel  x:Name="stack">
+		
+		<!--
+		###############################################
+		################ Text Block ################### 
+		###############################################
+		--> 
+		<TextBlock Margin="1" Foreground="Red">
+			This is a TextBlock control<LineBreak />
+			with multiple lines of text.
+		</TextBlock>
+		<TextBlock Margin="1" TextTrimming="CharacterEllipsis" Foreground="Green">
+			This is a TextBlock control with text that may not be rendered completely, which will be indicated with an ellipsis.
+		</TextBlock>
+		<TextBlock Margin="1" TextWrapping="Wrap" Foreground="Blue">
+			This is a TextBlock control with automatically wrapped text, using the TextWrapping property.
+		</TextBlock>
+		<TextBlock Margin="1" TextWrapping="Wrap">
+			TextBlock with <Bold>bold</Bold>, <Italic>italic</Italic> and <Underline>underlined</Underline> text.
+		</TextBlock>
+
+		   <!--a definicao do resultado desse hyperlink é--> 
+		<TextBlock Margin="1" TextWrapping="Wrap">
+			This text has a <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.google.com">link</Hyperlink> in it.
+		</TextBlock>
+
+
+		<!--allows you to set almost any kind of specific rendering, including font size, style and weight,-->
+		<!--Span element may contain other inline elements, a Run element may only contain plain text-->
+		<TextBlock Margin="1" TextWrapping="Wrap">
+			This <Span FontWeight="Bold">is</Span> a
+			<Span Background="Silver" Foreground="Maroon">TextBlock</Span>
+			with <Span TextDecorations="Underline">several</Span>
+			<Span FontStyle="Italic">Span</Span> elements,
+			<Span Foreground="Blue">
+				using a <Bold>variety</Bold> of <Italic>styles</Italic>
+			</Span>.
+		</TextBlock>
+
+		<!--
+		###################################################
+		################  Label control ###################
+		###################################################
+		
+			 the Label has a Content property. The reason for that is that the Label 
+			 can host any kind of control directly inside of it, instead of just text
+		
+			 DIFERENCA entre label e textBlock
+			 Specify a border
+			 Render other controls, e.g. an image
+			 Use templated content through the ContentTemplate property
+			 Use access keys to give focus to related controls
+		
+			 access key by placing an underscore (_) before the character
+		
+			Target property to connect the Label and the designated control. 
+			We use a standard WPF binding for this, using the ElementName property
+		
+			##########nao entendi o binding
+		-->
+		<Label Content="_LabelText:" Target="{Binding ElementName=txtName}" />
+		<Label Target="{Binding ElementName=txtName}">
+			<StackPanel Orientation="Horizontal">
+				<Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png" />
+				<AccessText Text="_LabelText:" />
+			</StackPanel>
+		</Label>
+
+
+
+		<!--
+		###################################################
+		################  TextBox control ###################
+		###################################################
+		-->
+
+		<!--single line-->
+		<TextBox Text="teste" />
+		<!--multiple lines and spellchek-->
+		<TextBox AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="en-US" />
+		
+		<!-- change selected text test -->
+		<!-- ver .cs 
+			propriedades
+			SelectionStart 
+			SelectionLength 
+			SelectedText
+			All of these properties are both readable and writable
+		-->
+		<TextBox SelectionChanged="TextBox_SelectionChanged" DockPanel.Dock="Top" />
+		<TextBox Name="txtStatus" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" />
+
+
+		<!--
+		###################################################
+		################  CheckBox  control ###############
+		###################################################
+		-->
+
+		<Label FontWeight="Bold">Application Options</Label>
+		<StackPanel Margin="10,5">
+			<CheckBox IsThreeState="True" Name="cbAllFeatures" Checked="cbAllFeatures_CheckedChanged" Unchecked="cbAllFeatures_CheckedChanged">Enable all</CheckBox>
+			<StackPanel Margin="20,5">
+				<CheckBox Name="cbFeatureAbc" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged">
+					  <WrapPanel>
+						<TextBlock>
+							Enable feature<Run FontWeight="Bold">XYZ</Run>
+						</TextBlock>
+						<Image  Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png" Width="16" Height="16" Margin="5,0" />
+					  </WrapPanel>
+				</CheckBox>
+				<CheckBox Name="cbFeatureXyz" IsChecked="True" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged">Enable feature XYZ</CheckBox>
+				<CheckBox Name="cbFeatureWww" Checked="cbFeature_CheckedChanged" Unchecked="cbFeature_CheckedChanged">Enable feature WWW</CheckBox>
+			</StackPanel>
+		</StackPanel>
+
+
+		<!--
+		###################################################
+		################  RadioButton  control ###############
+		###################################################
+		-->
+		<Label FontWeight="Bold">Test Radio Buttons</Label>
+		<RadioButton GroupName="ready">Yes</RadioButton>
+        <RadioButton GroupName="ready"  IsChecked="True">
+			<WrapPanel>
+				<Image  Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png"  Width="16" Height="16" Margin="0,0,5,0" />
+				<TextBlock Text="Yes"/>
+			</WrapPanel>
+		</RadioButton>
+		
+
+		<Label FontWeight="Bold">Test Radio groups</Label>
+        <RadioButton GroupName="sex">Male</RadioButton>
+        <RadioButton GroupName="sex" IsChecked="True">Female</RadioButton>
+
+
+		<!--
+		###################################################
+		################  PasswordBox   control ###############
+		###################################################
+		
+		com relacao a binding ver depois
+		the Password property is not implemented as a dependency property, which means that you can't bind to it.
+		This may or may not be important to you - as already stated, you can still read the password
+		from Code-behind, but for MVVM implementations or if you just love data bindings, a workaround has been developed.
+		You can read much more about it here:
+		http://blog.functionalfun.net/2008/06/wpf-passwordbox-and-data-binding.html 
+		-->
+		<Label>Password:</Label>
+		<PasswordBox MaxLength="6" PasswordChar="X" />
+
+		<!--
+		###################################################
+		################  PasswordBox   control ###############
+		################################################### 
+		
+		 ToolTip property found on the FrameworkElement class, which almost any WPF control inherits from.
+		https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.tooltipservice?redirectedfrom=MSDN&view=netframework-4.7.2
+		you can completely control the design and content of the tooltip, with properties from the ToolTipService class
+		
+		ToolTipService.ShowDuration define o tempo que o hint fica visivel 
+		-->
+		<ToolBar DockPanel.Dock="Top">
+			<Button ToolTip="Create a new file"  ToolTipService.ShowDuration="5000" >
+				<Button.Content>
+					<Image Source="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfReferencia\compass.jpg" Width="16" Height="16" />
+				</Button.Content>
+			</Button>
+	   
+			</ToolBar >
+
+		<!--
+		###################################################
+		################  Controlling text rendering ###############
+		################################################### 
+		TextOptions class with the TextFormattingMode and TextRenderingMode properties. 
+		This allows you to specifically decide how text should be formatted and rendered on a control level
+		You can choose between Ideal (the default value) and Display
+		-->
+		<Label TextOptions.TextFormattingMode="Ideal" FontSize="9">TextFormattingMode.Ideal, small text</Label>
+		<Label TextOptions.TextFormattingMode="Display" FontSize="9">TextFormattingMode.Display, small text</Label>
+		<Label TextOptions.TextFormattingMode="Ideal" FontSize="15">TextFormattingMode.Ideal, large text</Label>
+		<Label TextOptions.TextFormattingMode="Display" FontSize="15">TextFormattingMode.Display, large text</Label>
+
+
+
+	
+		<Label TextOptions.TextRenderingMode="Auto" FontSize="18">TextRenderingMode.Auto, large text</Label>
+		<Label TextOptions.TextRenderingMode="Aliased" FontSize="18">TextRenderingMode.Aliased, large text</Label>
+		<Label TextOptions.TextRenderingMode="ClearType" FontSize="18">TextRenderingMode.ClearType, large text</Label>
+		<Label TextOptions.TextRenderingMode="Grayscale" FontSize="18">TextRenderingMode.Grayscale, large text</Label>
+
+	</StackPanel>
+</Window>
