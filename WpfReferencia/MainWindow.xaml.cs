@@ -22,7 +22,9 @@ namespace WpfReferencia
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
+
+
     }
 }

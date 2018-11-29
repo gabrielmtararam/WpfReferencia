@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfReferencia"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+     
+        Title="MainWindow" Height="450" Width="800" Icon="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfReferencia\compass.jpg" ResizeMode="CanMinimize" ShowInTaskbar="True" SizeToContent="Manual" Topmost="True" WindowStartupLocation="CenterScreen" WindowState="Minimized">
     <Grid>
         
     </Grid>
 </Window>
+<!--ver caminho relativo 
+    ShowInTaskbar=False nao exibe o icone da janela na task bar
+    Topmost True mantem a janela no top das outras sempre
+    
+    App.xaml.cs extends the Application class, which is a central class in a WPF Windows 
+    
+    Startup="Application_Startup">
+    substituiu pelo evento Startup
+
+    -->
