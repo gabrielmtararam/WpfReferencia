@@ -1,0 +1,161 @@
+﻿<Window x:Class="WpReferencePanels.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpReferencePanels"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid>
+        <!-- ###################################################
+	    	 ################  Grid   ########################
+		     ################################################### -->
+        <!-- 
+       The Grid is probably the most complex of the panel types. A Grid can contain
+        multiple rows and columns. You define a height for each of the rows and a width
+        for each of the columns, in either an absolute amount of pixels, in a percentage of the available
+        space or as auto, where the row or column will automatically adjust its size depending on the content.
+        
+        In its most basic form, the Grid will simply take all of the controls you put into it, stretch 
+        them to use the maximum available space and place it on top of each other:
+         in this (1) case means that you can't even see the first button.
+        
+      -->
+        <Grid Margin="0,10,582,314">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+        </Grid>
+
+        <!-- dividing the space, We do that by using ColumnDefinitions
+        and RowDefinitions. In the first example, we'll stick to columns:
+        In this example, we have simply divided the available space into two 
+        columns, which will share the space equally, using a "star width"
+         to place the button in the second column (0 is the first column, 1 is the second and so on)
+        but it automatically gets assigned to the first column 
+        the controls take up all the available space, which is the default behavior 
+        
+        -->
+        <Grid Margin="255,10,369,314">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button>Button 1</Button>
+            <Button Grid.Column="1">Button 2</Button>
+        </Grid>
+
+        <!-- to only take up the space they 
+        need though and/or control how they are placed in the Grid. The  way to 
+        do this is to set the HorizontalAlignment and VerticalAlignment
+        directly on the controls you wish to manipulate.S
+        -->
+        <Grid Margin="456,10,88,314">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button VerticalAlignment="Top" HorizontalAlignment="Center">Button 1</Button>
+            <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">Button 2</Button>
+        </Grid>
+
+        <!-- TABULAR LAYOUt 
+        he first row and the first column has a width of 2*,
+        which basically means that it uses twice the amount
+        of space as the rows and columns with a width of 1* (or just * - that's the same).
+        -->
+        <Grid Margin="10,141,509,163">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Button>Button 1</Button>
+            <Button Grid.Column="1">Button 2</Button>
+            <Button Grid.Column="2">Button 3</Button>
+            <Button Grid.Row="1">Button 4</Button>
+            <Button Grid.Column="1" Grid.Row="1">Button 5</Button>
+            <Button Grid.Column="2" Grid.Row="1">Button 6</Button>
+            <Button Grid.Row="2">Button 7</Button>
+            <Button Grid.Column="1" Grid.Row="2">Button 8</Button>
+            <Button Grid.Column="2" Grid.Row="2">Button 9</Button>
+        </Grid>
+
+        <!--However, there are two other ways of specifying 
+        the width or height of a column or a row: Absolute units and the Auto width/height.
+        the second button only takes exactly the amount of space it needs to render its longer text
+         the third button takes exactly the 100 pixels
+        -->
+
+        <Grid Margin="298,141,191,173">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Button>Button 1</Button>
+            <Button Grid.Column="1">Button 2 with long text</Button>
+            <Button Grid.Column="2">Button 3</Button>
+        </Grid>
+
+        <!-- make grid take more cells 
+        -->
+        <Grid Margin="628,141,34,173">
+ 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button Grid.ColumnSpan="2">Button 1</Button>
+                <Button Grid.Column="3">Button 2</Button>
+                <Button Grid.Row="1">Button 3</Button>
+                <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">Button 4</Button>
+                <Button Grid.Column="0" Grid.Row="2">Button 5</Button>
+            </Grid>
+        
+        <!-- ###################################################
+	    	 ################  Grid splitter ###################
+		     ################################################### -->
+        <!-- 
+    GridSplitter is used simply by adding it to a column or a row in a Grid,
+        with the proper amount of space for it, e.g. 5 pixels. It will then 
+        allow the user to drag it from side to side or up and down,
+        while changing the size of the column or row on each of the sides of it. Here's an example: 
+        
+        he GridSplitter figures out the rest on its own, but in case it doesn't, you can use the
+        ResizeDirection property on it to force it into either Rows or Columns mode.
+        -->
+        <Grid Margin="10,271,516,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <TextBlock Grid.Column="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock>
+        </Grid>
+
+        <Grid Margin="281,284,301,19">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Top</TextBlock>
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
+            <TextBlock Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Bottom</TextBlock>
+        </Grid>
+
+    </Grid>
+</Window>

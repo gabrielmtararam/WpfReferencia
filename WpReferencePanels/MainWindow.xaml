@@ -7,15 +7,52 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
         <!-- ###################################################
 	    	 ################  Canvas   ########################
-		     ################################################### --> 
+		     ################################################### -->
         <!-- 
         A simple panelIt allows you to assign specific 
         coordinates to each of the child controls, giving you total control of the layout
          you have to manually move the child controls around and make 
         sure that they align the way you want them to. 
+        
+        The Canvas does absolutely nothing until you start giving coordinates to the child controls.
+        This is done using the Left, Right, Top and Bottom attached properties from the Canvas control.
+        These properties allow you to specify the position relative to the four edges of the Canvas
+        
+        ince the Canvas gives you complete control of positions, it won't really care whether or not 
+        there's enough room for all your controls or if one is on top of another. 
+        
+         WPF has a bunch of controls that you can place inside a Canvas, to make nice illustrations.
+        
+        if two controls within a Canvas overlaps, the one defined last in the markup
+        will take precedence and overlap the other(s)
+        . However, by using the attached ZIndex property on the Panel class, this can easily be changed.
         -->
+        <Canvas Grid.ColumnSpan="2">
+            <Button Canvas.Left="10">Top left</Button>
+            <Button Canvas.Right="10">Top right</Button>
+            <Button Canvas.Left="10" Canvas.Bottom="10">Bottom left</Button>
+            <Button Canvas.Right="10" Canvas.Bottom="10">Bottom right</Button>
+        </Canvas>
+
+        <!--o primeiro nao utiliza z-index o segundo utiliza pra ordem as sobreposicoes-->
+        <Canvas Grid.ColumnSpan="2">
+            <Ellipse Fill="Gainsboro" Canvas.Left="254" Canvas.Top="28" Width="200" Height="200" />
+            <Rectangle Fill="LightBlue" Canvas.Left="313" Canvas.Top="59" Width="50" Height="50" />
+            <Rectangle Fill="LightCoral" Canvas.Left="336" Canvas.Top="86" Width="50" Height="50" RenderTransformOrigin="-3.551,0.774" />
+            <Rectangle Fill="LightCyan" Canvas.Left="363" Canvas.Top="114" Width="50" Height="50" />
+        </Canvas>
+        <Canvas Grid.ColumnSpan="2">
+            <Ellipse Panel.ZIndex="2" Fill="Gainsboro" Canvas.Left="25" Canvas.Top="25" Width="200" Height="200" />
+            <Rectangle Panel.ZIndex="3" Fill="LightBlue" Canvas.Left="25" Canvas.Top="25" Width="50" Height="50" />
+            <Rectangle Panel.ZIndex="2" Fill="LightCoral" Canvas.Left="50" Canvas.Top="50" Width="50" Height="50" />
+            <Rectangle Panel.ZIndex="4" Fill="LightCyan" Canvas.Left="75" Canvas.Top="75" Width="50" Height="50" />
+        </Canvas>
 
         <!-- ###################################################
 	    	 ################  WrapPanel   ########################
@@ -23,7 +60,34 @@
         <!-- 
         will position each of its child controls next to the other, horizontally (default) 
         or vertically, until there is no more room, where it will wrap to the next line and then continue.
+        
+        When the WrapPanel uses the Horizontal orientation, the child controls will be given
+        the same height, based on the tallest item. When the WrapPanelis the Vertical orientation,
+        the child controls will be given the same width, based on the widest item.
+        
+        vertical WrapPanel and width is not matched in a Horizontal WrapPanel
+        ex vai aplicar aquilo soh para aquele botao e nao a linha e coluna toda
         -->
+        <WrapPanel Height="150" Width="170
+ " Margin="100,10,180,259" Grid.Column="1">
+            <Button>Test button 1</Button>
+            <Button>Test button 2</Button>
+            <Button>Test button 3</Button>
+            <Button Height="40">Test button 4</Button>
+            <Button>Test button 5</Button>
+            <Button>Test button 6</Button>
+        </WrapPanel>
+
+        <WrapPanel Orientation="Vertical"  Height="70" Width="250" Margin="115,10,427,339" Grid.ColumnSpan="2">
+            <Button>Test button 1</Button>
+            <Button>Test button 2</Button>
+            <Button>Test button 3</Button>
+            <Button Width="140">Test button 4</Button>
+            <Button>Test button 5</Button>
+            <Button>Test button 6</Button>
+        </WrapPanel>
+
+
 
         <!-- ###################################################
 	    	 ################  StackPanel   ########################
@@ -33,10 +97,30 @@
         ]if the child controls take up too much room, it simply expands itself, if possible.
          but instead of adjusting the width or height of the child controls based on the
         largest item, each item is stretched to take up the full width or height
-        -->
-
         
-        <!-- ###################################################
+        StackPanel does this by setting the HorizontalAlignment or VerticalAlignment property on
+        its child controls to Stretch, but you can easily override this if you want to. 
+        on a vertical aligment can use lef and right instead of top bottom
+        -->
+        <StackPanel Margin="67,105,0,163" Grid.Column="1">
+            <Button>Button 1</Button>
+            <Button>Button 2</Button>
+            <Button>Button 3</Button>
+            <Button>Button 4</Button>
+            <Button>Button 5</Button>
+            <Button Height="19">Button 6</Button>
+        </StackPanel>
+ 
+            <StackPanel Orientation="Horizontal" Margin="100,241,18,27" Grid.Column="1">
+                <Button VerticalAlignment="Top">Button 1</Button>
+                <Button VerticalAlignment="Center">Button 2</Button>
+                <Button VerticalAlignment="Bottom">Button 3</Button>
+                <Button VerticalAlignment="Bottom">Button 4</Button>
+                <Button VerticalAlignment="Center">Button 5</Button>
+                <Button VerticalAlignment="Top">Button 6</Button>
+            </StackPanel>
+
+            <!-- ###################################################
 	    	 ################  DockPanel   ########################
 		     ################################################### -->
         <!-- 
@@ -45,7 +129,36 @@
         the DockPanel will be easier to use than grid in some cases
        Use the DockPanel whenever you need to dock one or several controls to one of the sides,
         like for dividing up the window into specific areas.
+        
+        decides in which direction you want the child control to dock to.
+        If you don't use this, the first control(s) will be docked to the left
+        
+        we don't assign a dock position for the last child, because it automatically centers the control,
+        
+         The DockPanel decides which control to favor by looking at their position in the markup. 
+        In this case, the Left button gets precedence because it's placed first in the markup
+        
+        but this can be changed, changing it's height and widht
+        
+        LastChildFill="False" ignore the center, dont use it to the last child
         -->
+
+
+        <DockPanel Margin="0,226,166,80">
+            <Button DockPanel.Dock="Left">Left</Button>
+            <Button DockPanel.Dock="Top">Top</Button>
+            <Button DockPanel.Dock="Right">Right</Button>
+            <Button DockPanel.Dock="Bottom">Bottom</Button>
+            <Button>Center</Button>
+        </DockPanel>
+
+        <DockPanel Margin="181,226,37,82" LastChildFill="False">
+            <Button DockPanel.Dock="Top" Height="20">Top</Button>
+            <Button DockPanel.Dock="Bottom" Height="20">Bottom</Button>
+            <Button DockPanel.Dock="Left" Width="20">Left</Button>
+            <Button DockPanel.Dock="Right" Width="20">Right</Button>
+            
+        </DockPanel>
 
         <!-- ###################################################
 	    	 ################  Grid   ########################
