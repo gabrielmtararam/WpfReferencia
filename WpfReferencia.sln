@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpReferencePanels", "WpRefe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDataBindingReference", "WpfDataBindingReference\WpfDataBindingReference.csproj", "{595F20C0-14EE-4466-929E-0079CC5ADFA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{9DF09F59-2A1E-4F4C-8EDA-3822DEE5FE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{595F20C0-14EE-4466-929E-0079CC5ADFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{595F20C0-14EE-4466-929E-0079CC5ADFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{595F20C0-14EE-4466-929E-0079CC5ADFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF09F59-2A1E-4F4C-8EDA-3822DEE5FE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF09F59-2A1E-4F4C-8EDA-3822DEE5FE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF09F59-2A1E-4F4C-8EDA-3822DEE5FE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF09F59-2A1E-4F4C-8EDA-3822DEE5FE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
