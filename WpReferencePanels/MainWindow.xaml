@@ -102,7 +102,7 @@
         its child controls to Stretch, but you can easily override this if you want to. 
         on a vertical aligment can use lef and right instead of top bottom
         -->
-        <StackPanel Margin="67,105,0,163" Grid.Column="1">
+        <StackPanel Margin="57,112,0,163" Grid.Column="1">
             <Button>Button 1</Button>
             <Button>Button 2</Button>
             <Button>Button 3</Button>

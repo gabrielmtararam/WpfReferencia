@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style  x:Key="defaultPadding" TargetType="{x:Type Panel }">
+            <Setter Property="Margin" Value="0,3,3,4" />
+        </Style>
+
+        <Style  x:Key="defaultPaddingControl" TargetType="{x:Type Control }">
+            <Setter Property="Margin" Value="0,3,3,4" />
+        </Style>
+        
+        <Style  x:Key="defaultPadding2" TargetType="{x:Type Control}">
+            <Setter Property="Margin" Value="5,3,0,5" />
+        </Style>
     </Application.Resources>
+     <!--Style="{StaticResource defaultPadding}"-->
 </Application>

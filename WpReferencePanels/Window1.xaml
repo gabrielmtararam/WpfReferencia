@@ -93,7 +93,7 @@
 
         <Grid Margin="298,141,191,173">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
