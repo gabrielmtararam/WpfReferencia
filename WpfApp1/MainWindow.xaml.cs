@@ -30,7 +30,7 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-        private void selectImage(object sender, RoutedEventArgs e) 
+        private void selectImage(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
@@ -41,8 +41,12 @@ namespace WpfApp1
             {
                 userImage.Source = new BitmapImage(new Uri(op.FileName));
             }
+           
         }
 
- 
+        private void WindowSaveEventHanddler(object sender, EventArgs e)
+        {
+            MessageBox.Show("" + "test");
+        }
     }
 }

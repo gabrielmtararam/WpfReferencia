@@ -24,63 +24,68 @@
 	<Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">Button 4</Button>
 	<Button Grid.Column="0" Grid.Row="2">Button 5</Button>-->
 
-    
-        <Grid>
-      
+
+	<Grid>
 
 
-            <Grid.RowDefinitions>
+
+		<Grid.RowDefinitions>
 			<RowDefinition Height="100" />
 
 			<RowDefinition Height="*" />
-            <RowDefinition Height="40" />
+			<RowDefinition Height="40" />
 
-        </Grid.RowDefinitions>
+		</Grid.RowDefinitions>
 
-           
-                <Grid  >
-		  
-			 
-   
+
+		<Grid  >
+
+
+
 			<Grid.RowDefinitions>
 				<RowDefinition Height="50"  />
 
 				<RowDefinition Height="50"  />
 
 			</Grid.RowDefinitions>
-		   
+
 			<Grid.ColumnDefinitions>
-				
+
 				<ColumnDefinition Width="2*" />
 
 				<ColumnDefinition Width="*" />
 
 			</Grid.ColumnDefinitions>
-                  
-                        <control:CustomTextBox Grid.Column="0" Grid.Row="0" />
-                    
-                    
-                        <control:CustomTextBox Grid.Column="0" Grid.Row="1"  />
+
+			<control:CustomTextBox x:Name="TBpaciente" Grid.Column="0" Grid.Row="0" />
+
+
+			<control:CustomTextBox  x:Name="TBidade" Grid.Column="0" Grid.Row="1"  />
 
 
 
-            <Button Click="selectImage"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"  Style="{StaticResource defaultPaddingControl}" >
-		   <Image x:Name="userImage" Source="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfApp1\defaultImage.png"   />
-		</Button>
-                 
-                </Grid >
-           
-        <control:CustomTextBox  Grid.Row="1"/>
-        <DockPanel  Grid.Row="2" LastChildFill="True" Style="{StaticResource defaultPadding}"  >
+			<Button Click="selectImage"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"  Style="{StaticResource defaultPaddingControl}" >
+				<Image x:Name="userImage" Source="C:\Users\gabri\source\repos\ReferenciaWPF\WpfReferencia\WpfApp1\defaultImage.png"   />
+			</Button>
 
-            <Label   FontSize="14"   >
-                * Campo obrigatório</Label>
+		</Grid >
 
-            <Button Style="{StaticResource defaultPaddingControl}" >Salvar</Button>
+		<control:CustomTextBox  x:Name="TBreceita"  Grid.Row="1"/>
+
+		<DockPanel   Grid.Row="2" LastChildFill="True" VerticalAlignment="Top"  Style="{StaticResource defaultPaddingBotton}"  >
+		 
+				<Label   FontSize="14"   >
+				* Campo obrigatório</Label>
 
 
-        </DockPanel>
-        <!--<Label  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="18" Margin="18,10,0,0" VerticalAlignment="Top" Height="24" Width="19">
+
+            <control:CustomButton1 x:Name="cstBtn" SaveClicked="WindowSaveEventHanddler"  Grid.Row="1" />
+		 
+
+		   
+		</DockPanel>
+	   
+		<!--<Label  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="18" Margin="18,10,0,0" VerticalAlignment="Top" Height="24" Width="19">
 			*
 		</Label>
 		<Label  HorizontalAlignment="Left"  FontWeight="Bold" FontSize="18" Margin="18,49,0,0" VerticalAlignment="Top" Height="24" Width="19" Content="*"/>
@@ -90,7 +95,7 @@
 				" Margin="56,185,0,0" VerticalAlignment="Top" Height="24" Width="118" Content="Campos obrigatórios"/>
 		<Button Content="SALVAR" FontSize="10" HorizontalAlignment="Left" Margin="174,186,0,0" VerticalAlignment="Top" Width="91" Height="23"/>-->
 
-      
-    </Grid>
-   
+
+	</Grid>
+
 </Window>
