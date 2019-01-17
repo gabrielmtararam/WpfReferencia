@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace WpfApp1
+namespace WpfApp2
 {
     /// <summary>
     /// Interação lógica para UserControl1.xam

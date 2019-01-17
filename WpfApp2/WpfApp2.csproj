@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1E6EEAA-EF4C-4721-8C72-81052FBE4624}</ProjectGuid>
+    <ProjectGuid>{4DA0CE39-BBCF-4C26-8422-91F9F8446374}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPFTest</RootNamespace>
-    <AssemblyName>WPFTest</AssemblyName>
+    <RootNamespace>WpfApp2</RootNamespace>
+    <AssemblyName>WpfApp2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomButton1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="customRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,7 +76,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IntRangeRule.cs" />
+    <Compile Include="CustomButton1.xaml.cs">
+      <DependentUpon>CustomButton1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="customRegister.xaml.cs">
+      <DependentUpon>customRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomTextBox.xaml.cs">
+      <DependentUpon>CustomTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

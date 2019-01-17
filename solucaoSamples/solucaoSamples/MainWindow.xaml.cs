@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFTest
+namespace solucaoSamples
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            this.Age = 30;
         }
-        public int Age { get; set; }
     }
 }

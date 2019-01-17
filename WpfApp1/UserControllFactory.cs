@@ -12,9 +12,7 @@ namespace WpfApp1
         {
             switch (panelType)
             {
-                case 0:
-                        myPanel.Children.Insert(0, myNewControl);
-                    break;
+
                     
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,22 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-using System;
-using System.Windows;
-using System.Windows.Media.Imaging;
-using Microsoft.Win32;
-
-namespace WpfApp1
+namespace WpfApp2
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Interaction logic for customRegister.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class customRegister : UserControl
     {
-        public MainWindow Main;
+        public customRegister Main;
 
-        public MainWindow()
+        public customRegister()
         {
             Main = this;
             InitializeComponent();
@@ -44,7 +39,7 @@ namespace WpfApp1
             {
                 userImage.Source = new BitmapImage(new Uri(op.FileName));
             }
-           
+
         }
 
 
@@ -70,7 +65,7 @@ namespace WpfApp1
         }
 
 
-            private void WindowSaveEventHanddler(object sender, EventArgs e)
+        private void WindowSaveEventHanddler(object sender, EventArgs e)
         {
             string message = "";
             bool validated = true;
@@ -83,11 +78,12 @@ namespace WpfApp1
                     validated = false;
                 }
             }
-           
-            if (validated==false)
+
+            if (validated == false)
                 MessageBox.Show("" + message);
             else
                 MessageBox.Show("" + "salvo com sucesso");
         }
     }
 }
+

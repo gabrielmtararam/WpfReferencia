@@ -13,18 +13,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFTest
+namespace WpfApp2
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            this.Age = 30;
         }
-        public int Age { get; set; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            customRegister customRegister1 = new customRegister();
+
+            stack1.Children.Add(customRegister1);
+        }
     }
 }
